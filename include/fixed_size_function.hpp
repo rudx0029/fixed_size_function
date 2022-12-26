@@ -7,7 +7,8 @@
 #ifndef FIXED_SIZE_FUNCTION_HPP_INCLUDED
 #define FIXED_SIZE_FUNCTION_HPP_INCLUDED
 
-#include <stdexcept>
+// #include <stdexcept> - remove exception handling
+#include <cassert> // replace exception handling with assert
 #include <functional>
 #include <tuple>
 #include <type_traits>
@@ -198,7 +199,8 @@ public:
 
 	Ret operator()(Args... args)
 	{
-		return vtable_.call ? vtable_.call(&storage_, std::forward<Args>(args)...) : throw std::bad_function_call();
+		assert(vtable_.call);
+		return vtable_.call(&storage_, std::forward<Args>(args)...);
 	}
 
 	void swap(fixed_size_function& other)

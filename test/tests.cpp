@@ -122,18 +122,19 @@ int main()
 	fun3.reset();
 	ensure(!fun && !fun3);
 
+	// Exception handling replaced with an 'assert'
 	// std::bad_function_call exception on empty function call
-	bool bad_call_catched = false;
-	if (fun == nullptr)
-	{
-		try
-		{
-			fun(0);
-		}
-		catch (std::bad_function_call const&)
-		{
-			bad_call_catched = true;
-		}
-	}
-	ensure(bad_call_catched);
+	// bool bad_call_catched = false;
+	// if (fun == nullptr)
+	// {
+	// 	try
+	// 	{
+	// 		fun(0);
+	// 	}
+	// 	catch (std::bad_function_call const&)
+	// 	{
+	// 		bad_call_catched = true;
+	// 	}
+	// }
+	// ensure(bad_call_catched);
 }
